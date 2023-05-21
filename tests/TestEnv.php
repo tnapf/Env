@@ -1,7 +1,8 @@
 <?php
 
-namespace Tests\Tnapf\Env;
+namespace Tnapf\Env\Tests;
 
+use Exception;
 use LogicException;
 use RuntimeException;
 use PHPUnit\Framework\TestCase;
@@ -66,7 +67,7 @@ class TestEnv extends TestCase
     public function testCreatingFromNonExistingFile(): void
     {
         Env::destroy();
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         Env::createFromFile(__DIR__.'/.non-existing.env');
     }
 
