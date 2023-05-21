@@ -1,6 +1,6 @@
 {
-  "name": "tnapf/package",
-  "description": "A package that does something",
+  "name": "tnapf/env",
+  "description": "A environment package for PHP",
   "license": "MIT",
   "type": "project",
   "authors": [
@@ -28,12 +28,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Tnapf\\Package\\": "src/"
+      "Tnapf\\Env\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Tnapf\\Package\\Test\\": "tests/"
+      "Tnapf\\Env\\Tests\\": "tests/"
     }
   },
   "config": {
