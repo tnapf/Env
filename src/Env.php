@@ -2,6 +2,7 @@
 
 namespace Tnapf\Env;
 
+use ArrayAccess;
 use LogicException;
 use RuntimeException;
 
@@ -11,9 +12,11 @@ use function preg_match;
 use function strlen;
 use function trim;
 
-class Env
+class Env implements ArrayAccess
 {
     protected static ?self $instance = null;
+
+    protected array $props = [];
 
     /**
      * @throws LogicException If an Environment has already been created
@@ -21,7 +24,7 @@ class Env
     public function __construct()
     {
         if (self::$instance !== null) {
-            throw new LogicException("An Environment has already been substantiated!");
+            throw new LogicException('An Environment has already been substantiated!');
         }
 
         self::$instance = $this;
@@ -56,7 +59,7 @@ class Env
 
             $number++; // make line number proper
 
-            $parts = explode("=", $line);
+            $parts = explode('=', $line);
 
             if (count($parts) !== 2) {
                 throw new RuntimeException("Line {$number} is not correct");
@@ -65,7 +68,7 @@ class Env
             $name = trim($parts[0]);
             $value = trim($parts[1]);
 
-            if (preg_match("/[^a-zA-Z0-9_]/", $name)) {
+            if (preg_match('/[^a-zA-Z0-9_]/', $name)) {
                 throw new RuntimeException("{$name} is not valid on line {$number}");
             }
 
@@ -80,12 +83,10 @@ class Env
         self::$instance = null;
     }
 
-    public function __debuginfo()
+    public function __debugInfo()
     {
         return $this->props;
     }
-
-    protected array $props = [];
 
     public function __set(mixed $name, mixed $value): void
     {
