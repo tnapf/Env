@@ -6,11 +6,6 @@ use ArrayAccess;
 use LogicException;
 use RuntimeException;
 
-use function count;
-use function explode;
-use function preg_match;
-use function trim;
-
 class Env implements ArrayAccess
 {
     protected static ?self $instance = null;
