@@ -68,7 +68,7 @@ class Env implements ArrayAccess
             $name = trim($parts[0]);
             $value = trim($parts[1]);
 
-            if (preg_match('/[^a-zA-Z0-9_]/', $name)) {
+            if (preg_match('/\W/', $name)) {
                 throw new RuntimeException("{$name} is not valid on line {$number}");
             }
 
