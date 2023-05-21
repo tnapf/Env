@@ -9,7 +9,6 @@ use RuntimeException;
 use function count;
 use function explode;
 use function preg_match;
-use function strlen;
 use function trim;
 
 class Env implements ArrayAccess
@@ -53,7 +52,7 @@ class Env implements ArrayAccess
         $lines = explode("\n", $contents);
 
         foreach ($lines as $number => $line) {
-            if (!strlen(trim($line))) {
+            if (trim($line) === '') {
                 continue;
             }
 
