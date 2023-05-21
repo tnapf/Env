@@ -64,6 +64,6 @@
     "fix": "php-cs-fixer fix --using-cache=no",
     "fix:dry": "php-cs-fixer fix --using-cache=no --diff --dry-run",
     "test": "phpunit",
-    "test:coverage": "phpunit --coverage-html .phpunit.cache/cov-html"
+    "test:coverage": "@php -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-html .phpunit.cache/cov-html"
   }
 }
