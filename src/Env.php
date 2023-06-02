@@ -6,12 +6,6 @@ use ArrayAccess;
 use LogicException;
 use RuntimeException;
 
-use function count;
-use function explode;
-use function preg_match;
-use function strlen;
-use function trim;
-
 class Env implements ArrayAccess
 {
     protected static ?self $instance = null;
@@ -53,7 +47,7 @@ class Env implements ArrayAccess
         $lines = explode("\n", $contents);
 
         foreach ($lines as $number => $line) {
-            if (!strlen(trim($line))) {
+            if (trim($line) === '') {
                 continue;
             }
 
@@ -68,7 +62,7 @@ class Env implements ArrayAccess
             $name = trim($parts[0]);
             $value = trim($parts[1]);
 
-            if (preg_match('/[^a-zA-Z0-9_]/', $name)) {
+            if (preg_match('/\W/', $name)) {
                 throw new RuntimeException("{$name} is not valid on line {$number}");
             }
 
