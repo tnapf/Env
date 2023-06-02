@@ -23,33 +23,33 @@ class Env implements ArrayAccess
      */
     public function __construct()
     {
-        if (self::$instance !== null) {
+        if (static::$instance !== null) {
             throw new LogicException('An Environment has already been substantiated!');
         }
 
-        self::$instance = $this;
+        static::$instance = $this;
     }
 
-    public static function get(): ?self
+    public static function get(): ?static
     {
-        return self::$instance ?? null;
+        return static::$instance ?? null;
     }
 
     /**
      * @throws RuntimeException If the file does not exist
      */
-    public static function createFromFile(string $path): self
+    public static function createFromFile(string $path): static
     {
         if (!file_exists($path)) {
             throw new RuntimeException("{$path} is not an existing env file!");
         }
 
-        return self::createFromString(file_get_contents($path));
+        return static::createFromString(file_get_contents($path));
     }
 
-    public static function createFromString(string $contents): self
+    public static function createFromString(string $contents): static
     {
-        $instance = new self();
+        $instance = new static();
         $lines = explode("\n", $contents);
 
         foreach ($lines as $number => $line) {
@@ -80,7 +80,7 @@ class Env implements ArrayAccess
 
     public static function destroy(): void
     {
-        self::$instance = null;
+        static::$instance = null;
     }
 
     public function __debugInfo()
