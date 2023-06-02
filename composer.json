@@ -2,7 +2,7 @@
   "name": "tnapf/env",
   "description": "A environment package for PHP",
   "license": "MIT",
-  "type": "project",
+  "type": "library",
   "authors": [
     {
       "name": "Robert Snedeker",
