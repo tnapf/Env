@@ -44,7 +44,7 @@ class Env implements ArrayAccess
     public static function createAuto(): Env
     {
         if (file_exists(getcwd() . '/.env')) {
-            return static::createFromFile(BOT_ROOT.'/.env');
+            return static::createFromFile(BOT_ROOT . '/.env');
         }
 
         return static::createFromArray($_ENV);
