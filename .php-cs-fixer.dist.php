@@ -208,8 +208,6 @@ return $config->setRiskyAllowed(true)
         'short_scalar_cast' => true,
         // A PHP file without end tag must always end with a single empty line feed.
         'single_blank_line_at_eof' => true,
-        // There should be exactly one blank line before a namespace declaration.
-        'single_blank_line_before_namespace' => true,
         // There MUST NOT be more than one property or constant declared per statement.
         'single_class_element_per_statement' => ['elements' => ['const', 'property']],
         // There MUST be one use keyword per declaration.
