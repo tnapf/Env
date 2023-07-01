@@ -56,7 +56,7 @@ class TestEnv extends TestCase
     public function testCreatingFromFile(): void
     {
         Env::destroy();
-        Env::createFromFile(__DIR__.'/.test.env');
+        Env::createFromFile(__DIR__ . '/.test.env');
 
         $this->assertSame('root', Env::get()->USERNAME);
         $this->assertSame('123456', Env::get()->PASSWORD);
@@ -68,13 +68,13 @@ class TestEnv extends TestCase
     {
         Env::destroy();
         $this->expectException(Exception::class);
-        Env::createFromFile(__DIR__.'/.non-existing.env');
+        Env::createFromFile(__DIR__ . '/.non-existing.env');
     }
 
     public function testDebugInfo(): void
     {
         Env::destroy();
-        $env = Env::createFromFile(__DIR__.'/.test.env');
+        $env = Env::createFromFile(__DIR__ . '/.test.env');
 
         $props = [
             'USERNAME' => 'root',
@@ -89,7 +89,7 @@ class TestEnv extends TestCase
     public function testArrayAccess(): void
     {
         Env::destroy();
-        $env = Env::createFromFile(__DIR__.'/.test.env');
+        $env = Env::createFromFile(__DIR__ . '/.test.env');
         $env['TEST'] = 10;
 
         $this->assertSame('root', $env['USERNAME']);
